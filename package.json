@@ -1,0 +1,85 @@
+{
+  "name": "culldeck",
+  "productName": "CullDeck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CullDeck — fotoğraf ve video galerinizi temizleyin (Windows)",
+  "main": "electron/main.cjs",
+  "author": "CullDeck",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yreco28/CullDeck.git"
+  },
+  "homepage": "https://github.com/yreco28/CullDeck#readme",
+  "bugs": {
+    "url": "https://github.com/yreco28/CullDeck/issues"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build",
+    "start": "vite build && electron .",
+    "dist": "vite build && electron-builder --win",
+    "dist:dir": "vite build && electron-builder --win --dir"
+  },
+  "dependencies": {
+    "exifr": "7.1.3",
+    "framer-motion": "14.7.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.1.2",
+    "electron": "45.2.2",
+    "electron-builder": "26.18.0",
+    "vite": "8.3.5"
+  },
+  "build": {
+    "appId": "com.reco.culldeck",
+    "productName": "CullDeck",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "!electron/dev-*.cjs",
+      "assets/**/*",
+      "!assets/installer.nsh",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "artifactName": "CullDeck-Setup-${version}.exe",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CullDeck",
+      "uninstallDisplayName": "CullDeck",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "CullDeck-Portable-${version}.exe"
+    },
+    "compression": "maximum"
+  }
+}

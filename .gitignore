@@ -1,0 +1,24 @@
+# Bağımlılıklar
+node_modules/
+
+# Derleme çıktıları
+dist/
+release/
+win-unpacked/
+out/
+
+# Günlükler
+*.log
+
+# Yerel / geçici
+.env
+*.local
+*.tmp
+
+
+# İşletim sistemi
+Thumbs.db
+.DS_Store
+
+# Large local archive (do not upload to GitHub)
+CullDeck.rar
